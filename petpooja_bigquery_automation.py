@@ -401,7 +401,8 @@ async def main(from_date=None, to_date=None, report_filter=None, bigquery_only=F
 
         print("\n[STEP 1] Downloading from Petpooja...")
         async with async_playwright() as p:
-            browser = await p.chromium.launch(headless=False, downloads_path=str(TEMP_FOLDER))
+            headless_mode = os.getenv("HEADLESS", "true").lower() == "true"
+            browser = await p.chromium.launch(headless=headless_mode, downloads_path=str(TEMP_FOLDER))
             context = await browser.new_context(accept_downloads=True)
             page    = await context.new_page()
 
