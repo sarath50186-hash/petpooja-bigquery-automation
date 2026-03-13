@@ -1,0 +1,10 @@
+service_account.json
+client_secrets.json
+bigquery_token.json
+.env
+reports/
+__pycache__/
+*.pyc
+credentials/
+playwright/.auth/
+*.csv
