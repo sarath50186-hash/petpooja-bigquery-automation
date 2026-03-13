@@ -55,9 +55,15 @@ SAVE_FOLDER   = Path(r"C:\Users\oiasa\Desktop\EntranceCafe\March2026")
 TEMP_FOLDER   = SAVE_FOLDER / "temp_downloads"
 CSV_FOLDER    = SAVE_FOLDER / "csv_data"
 
-# Auth files (place next to this script)
+# Auth files — searches multiple locations for service account key
 SCRIPT_DIR     = Path(__file__).parent
-SA_KEY_FILE    = SCRIPT_DIR / "service_account.json"
+SA_KEY_PATHS   = [
+    SCRIPT_DIR / "service_account.json",
+    SCRIPT_DIR / "sa-key.json",
+    Path(r"C:\Users\oiasa\Desktop\janson key\sa-key.json"),
+    Path(r"C:\Users\oiasa\Downloads\sa-key.json"),
+]
+SA_KEY_FILE    = next((p for p in SA_KEY_PATHS if p.exists()), SA_KEY_PATHS[0])
 SECRETS_FILE   = SCRIPT_DIR / "client_secrets.json"
 TOKEN_FILE     = SCRIPT_DIR / "bigquery_token.json"
 

@@ -1,4 +1,5 @@
 service_account.json
+sa-key.json
 client_secrets.json
 bigquery_token.json
 .env
